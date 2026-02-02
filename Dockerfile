@@ -1,11 +1,14 @@
-# Use a lightweight, production-ready JRE
-FROM eclipse-temurin:17-jre
+# Use OpenJDK 17 image for running the Java app
+FROM openjdk:17-jre-slim
 
-# Create app directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy your already-built JAR into the image
-COPY app.jar app.jar
+# Copy the pre-built JAR file into the container
+COPY app.jar /app/app.jar
 
-# Run the JAR
+# Expose the port (just a hint, Render will assign the actual port)
+EXPOSE 8080
+
+# Run the pre-built JAR file
 CMD ["java", "-jar", "app.jar"]
