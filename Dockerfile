@@ -1,16 +1,10 @@
-# Step 1: Use an OpenJDK runtime
-FROM eclipse-temurin:17-jdk-alpine
+# Use Java 21
+FROM eclipse-temurin:21-jdk-alpine
 
-# Step 2: Set the working directory
 WORKDIR /app
 
-# Step 3: Copy your jar file into the container
-# Make sure your jar is actually named 'app.jar' in your repo or adjust accordingly
+# Copy your jar file
 COPY app.jar app.jar
 
-# Step 4: Expose the port (Render uses $PORT environment variable)
-# We don't hardcode it here, but we let the app know it's available.
-
-# Step 5: Run the application
-# We use the shell form or a specific syntax to ensure $PORT is read correctly
+# Render passes the PORT env variable; Java reads it at runtime
 CMD ["sh", "-c", "java -jar app.jar"]
