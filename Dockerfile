@@ -1,8 +1,6 @@
 # Use Java 21
 FROM eclipse-temurin:21-jdk-alpine
 
-RUN apk add --no-search --update mongodb-tools mongodb-shell
-
 WORKDIR /app
 
 # Copy your jar file
